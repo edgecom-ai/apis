@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.0.4
 
 info:
   title: Edgecom Energy - pTrack API
@@ -193,8 +193,22 @@ paths:
         Returns the modeled probability that a given day will be a Coincident Peak day in the Ontario electricity market. The probability values range from 0 to 1 and reflect the estimated likelihood of a peak event based on demand forecasts, weather conditions, historical patterns, and market indicators. This insight helps organizations monitor peak risk and prepare operational strategies to reduce demand during potential peak events.
       operationId: getIesoPeaksProbabilityBypTrack
       parameters:
-        - $ref: '#/components/parameters/start'
-        - $ref: '#/components/parameters/end'
+        - name: start
+          in: query
+          required: true
+          description: Inclusive start date (YYYY-MM-DD).
+          schema:
+            type: string
+            format: date
+          example: "2026-02-24"
+        - name: end
+          in: query
+          required: true
+          description: Exclusive end date (YYYY-MM-DD). Must be after `start`.
+          schema:
+            type: string
+            format: date
+          example: "2026-02-28"
       responses:
         '200':
           description: Coincident peak probability time series
