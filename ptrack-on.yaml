@@ -1,4 +1,5 @@
 openapi: 3.0.3
+
 info:
   title: Edgecom Energy - pTrack API
   version: 1.0.0
@@ -20,6 +21,7 @@ info:
 
     See the Authorization section for details on the authentication method and how
     to obtain an authorization token.
+
 servers:
   - url: https://api.edgecomenergy.net
     description: Production
@@ -397,13 +399,6 @@ components:
 
     Unauthorized:
       description: Missing or invalid API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-
-    NotFound:
-      description: Resource not found
       content:
         application/json:
           schema:
